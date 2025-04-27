@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import plants
+
 
 # Create your views here.
 
@@ -11,7 +13,7 @@ def home(request):
 
 
 def plant_index(request):
-    return render(request, "plant-index.html")
+    return render(request, "plant-index.html", {"plants": plants})
 
 
 def about(request):
