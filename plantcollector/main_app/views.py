@@ -12,3 +12,7 @@ def home(request):
 
 def list_plants(request):
     return render(request, "list_plants.html")
+
+
+def about(request):
+    return render(request, "about.html")
