@@ -9,7 +9,7 @@ from .models import plants
 
 def home(request):
     # Send a simple HTML response
-    return HttpResponse("<h1>Hello ᓚᘏᗢ</h1>")
+    return render(request, "home.html")
 
 
 def plant_index(request):
