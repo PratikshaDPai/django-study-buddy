@@ -8,3 +8,7 @@ from django.http import HttpResponse
 def home(request):
     # Send a simple HTML response
     return HttpResponse("<h1>Hello ᓚᘏᗢ</h1>")
+
+
+def list_plants(request):
+    return render(request, "list_plants.html")
