@@ -10,8 +10,8 @@ def home(request):
     return HttpResponse("<h1>Hello ᓚᘏᗢ</h1>")
 
 
-def list_plants(request):
-    return render(request, "list_plants.html")
+def plant_index(request):
+    return render(request, "plant-index.html")
 
 
 def about(request):
