@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic.edit import CreateView
 
 from .models import Plant
 
@@ -24,3 +25,9 @@ def about(request):
 def plant_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
     return render(request, "plants/details.html", {"plant": plant})
+
+
+class PlantCreate(CreateView):
+    model = Plant
+    fields = "__all__"
+    success_url = "/plants/"
