@@ -10,11 +10,7 @@
         </div>
         <div class="plant-details">
             <h1>{{ plant.name }}</h1>
-            {% if plant.age > 0 %}
-                <h2>A {{ plant.age }} year old {{ plant.breed }}</h2>
-            {% else %}
-                <h2>A {{ plant.breed }} kitten.</h2>
-            {% endif %}
+            <h2>A {{ plant.species }}</h2>
             <p>{{ plant.description }}</p>
             <div class="plant-actions">
                 <a href="{% url 'plant-update' plant.id %}" class="btn warn">Edit</a>
