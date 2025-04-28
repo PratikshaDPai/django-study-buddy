@@ -15,14 +15,16 @@
         {% for plant in plants %}
             <div class="card">
                 <div class="card-content">
-                    <div class="card-img-container">
-                        <img src="{% static 'images/sk8r-boi-cat.svg' %}" alt="A skater boy cat" />
-                    </div>
-                    <h2 class="card-title">{{ plant.name }}</h2>
-                    <p>A {{ plant.species }}</p>
-                    <p>
-                        <small>{{ plant.description }}</small>
-                    </p>
+                    <a href="{% url 'plant-detail' plant.id %}">
+                        <div class="card-img-container">
+                            <img src="{% static 'images/sk8r-boi-cat.svg' %}" alt="A skater boy cat" />
+                        </div>
+                        <h2 class="card-title">{{ plant.name }}</h2>
+                        <p>A {{ plant.species }}</p>
+                        <p>
+                            <small>{{ plant.description }}</small>
+                        </p>
+                    </a>
                 </div>
             </div>
         {% endfor %}

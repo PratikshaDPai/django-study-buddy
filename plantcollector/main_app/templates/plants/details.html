@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/plants/plant-details.css' %}" />
+{% endblock %}
+{% block content %}
+    <section class="plant-container">
+        <div class="plant-img">
+            <img src="{% static 'images/sk8r-boi-cat.svg' %}" alt="A skater boy cat" />
+        </div>
+        <div class="plant-details">
+            <h1>{{ plant.name }}</h1>
+            {% if plant.age > 0 %}
+                <h2>A {{ plant.age }} year old {{ plant.breed }}</h2>
+            {% else %}
+                <h2>A {{ plant.breed }} kitten.</h2>
+            {% endif %}
+            <p>{{ plant.description }}</p>
+        </div>
+    </section>
+{% endblock %}

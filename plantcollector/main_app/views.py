@@ -14,8 +14,13 @@ def home(request):
 
 def plant_index(request):
     plants = Plant.objects.all()
-    return render(request, "plant-index.html", {"plants": plants})
+    return render(request, "plants/index.html", {"plants": plants})
 
 
 def about(request):
     return render(request, "about.html")
+
+
+def plant_detail(request, plant_id):
+    plant = Plant.objects.get(id=plant_id)
+    return render(request, "plants/details.html", {"plant": plant})
