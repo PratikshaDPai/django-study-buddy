@@ -36,6 +36,12 @@
             <li>
               <a href="{% url 'about' %}">About</a>
             </li>
+            <li>
+              <form id="logout-form" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+              </form>
+            </li>
           {% else %}
             <li>
               <a href="{% url 'about' %}">About</a>
