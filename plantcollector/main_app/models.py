@@ -22,5 +22,7 @@ class Plant(models.Model):
 class Watering(models.Model):
     date = models.DateField()
 
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+
     def __str__(self):
         return f"{self.date}"
