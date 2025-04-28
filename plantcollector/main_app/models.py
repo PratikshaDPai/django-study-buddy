@@ -3,15 +3,11 @@ from django.db import models
 # Create your models here.
 
 
-class Plant:
-    def __init__(self, name, species, description):
-        self.name = name
-        self.species = species
-        self.description = description
+class Plant(models.Model):
+    name = models.CharField(max_length=100)
+    species = models.CharField(max_length=100)
+    description = models.TextField(max_length=250)
 
-
-# List of Plant instances
-plants = [
-    Plant("Jerry", "Money Plant", "Durable"),
-    Plant("Figgy", "Fiddle Lead Fig", "Drama queen"),
-]
+    # new code below
+    def __str__(self):
+        return self.name
