@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Plant
 
@@ -30,3 +30,13 @@ def plant_detail(request, plant_id):
 class PlantCreate(CreateView):
     model = Plant
     fields = "__all__"
+
+
+class PlantUpdate(UpdateView):
+    model = Plant
+    fields = "__all__"
+
+
+class PlantDelete(DeleteView):
+    model = Plant
+    success_url = "/plants/"
