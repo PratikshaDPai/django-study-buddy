@@ -4,6 +4,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 from .models import Plant
@@ -18,6 +20,7 @@ def home(request):
     return render(request, "home.html")
 
 
+@login_required
 def plant_index(request):
     plants = Plant.objects.all()
     return render(request, "plants/index.html", {"plants": plants})
@@ -27,6 +30,7 @@ def about(request):
     return render(request, "about.html")
 
 
+@login_required
 def plant_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
     watering_form = WateringForm()
@@ -35,6 +39,7 @@ def plant_detail(request, plant_id):
     )
 
 
+@login_required
 def add_watering(request, plant_id):
     # create a ModelForm instance using the data in request.POST
     form = WateringForm(request.POST)
@@ -74,7 +79,7 @@ def signup(request):
     # )
 
 
-class PlantCreate(CreateView):
+class PlantCreate(LoginRequiredMixin, CreateView):
     model = Plant
     fields = "__all__"
 
@@ -87,12 +92,12 @@ class PlantCreate(CreateView):
         return super().form_valid(form)
 
 
-class PlantUpdate(UpdateView):
+class PlantUpdate(LoginRequiredMixin, UpdateView):
     model = Plant
     fields = "__all__"
 
 
-class PlantDelete(DeleteView):
+class PlantDelete(LoginRequiredMixin, DeleteView):
     model = Plant
     success_url = "/plants/"
 
