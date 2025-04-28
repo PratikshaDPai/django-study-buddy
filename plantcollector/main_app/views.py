@@ -50,6 +50,14 @@ class PlantCreate(CreateView):
     model = Plant
     fields = "__all__"
 
+    # This inherited method is called when a
+    # valid plant form is being submitted
+    def form_valid(self, form):
+        # Assign the logged in user (self.request.user)
+        form.instance.user = self.request.user  # form.instance is the plant
+        # Let the CreateView do its job as usual
+        return super().form_valid(form)
+
 
 class PlantUpdate(UpdateView):
     model = Plant
