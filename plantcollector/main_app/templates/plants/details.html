@@ -31,6 +31,13 @@
                 <img src="{% static 'images/cat-onigiri.svg' %}" alt="A cat as onigiri" />
                 <img src="{% static 'images/kitty-kabob.svg' %}" alt="A kabob of kittens" />
             </div>
+            <!-- Add just above the waterings table -->
+            <h3>Add a Watering</h3>
+            <form method="post" class="subsection-content" autocomplete="off">
+                {% csrf_token %}
+                {{ watering_form.as_p }}
+                <button type="submit" class="btn submit">Add Watering</button>
+            </form>
             <table>
                 <thead>
                     <tr>

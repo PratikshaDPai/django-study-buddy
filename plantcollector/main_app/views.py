@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Plant
+from .forms import WateringForm
 
 
 # Create your views here.
@@ -24,7 +25,10 @@ def about(request):
 
 def plant_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
-    return render(request, "plants/details.html", {"plant": plant})
+    watering_form = WateringForm()
+    return render(
+        request, "plants/details.html", {"plant": plant, "watering_form": watering_form}
+    )
 
 
 class PlantCreate(CreateView):
