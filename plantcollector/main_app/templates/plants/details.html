@@ -41,20 +41,26 @@
                 {{ watering_form.as_p }}
                 <button type="submit" class="btn submit">Add Watering</button>
             </form>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for watering in plant.watering_set.all %}
+            {% if plant.watering_set.all.count %}
+                <table>
+                    <thead>
                         <tr>
-                            <td>{{ watering.date }}</td>
+                            <th>Date</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {% for watering in plant.watering_set.all %}
+                            <tr>
+                                <td>{{ watering.date }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="subsection-content">
+                    <p>⚠️ {{ plant.name }} has not been watered!</p>
+                </div>
+            {% endif %}
         </section>
     </div>
 {% endblock %}
