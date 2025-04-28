@@ -17,3 +17,10 @@ class Plant(models.Model):
     def get_absolute_url(self):
         # Use the 'reverse' function to dynamically find the URL for viewing this cat's details
         return reverse("plant-detail", kwargs={"plant_id": self.id})
+
+
+class Watering(models.Model):
+    date = models.DateField()
+
+    def __str__(self):
+        return f"{self.date}"
