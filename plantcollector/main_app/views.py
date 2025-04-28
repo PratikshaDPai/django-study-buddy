@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.views import LoginView
+
 
 from .models import Plant
 from .forms import WateringForm
@@ -57,3 +59,7 @@ class PlantUpdate(UpdateView):
 class PlantDelete(DeleteView):
     model = Plant
     success_url = "/plants/"
+
+
+class Home(LoginView):
+    template_name = "home.html"
