@@ -46,6 +46,32 @@ def add_watering(request, plant_id):
     return redirect("plant-detail", plant_id=plant_id)
 
 
+def signup(request):
+    error_message = ""
+    if request.method == "POST":
+        # This is how to create a 'user' form object
+        # that includes the data from the browser
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            # This will add the user to the database
+            user = form.save()
+            # This is how we log a user in
+            login(request, user)
+            return redirect("cat-index")
+        else:
+            error_message = "Invalid sign up - try again"
+    # A bad POST or a GET request, so render signup.html with an empty form
+    form = UserCreationForm()
+    context = {"form": form, "error_message": error_message}
+    return render(request, "signup.html", context)
+    # Same as:
+    # return render(
+    #     request,
+    #     'signup.html',
+    #     {'form': form, 'error_message': error_message}
+    # )
+
+
 class PlantCreate(CreateView):
     model = Plant
     fields = "__all__"
