@@ -124,4 +124,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "plant-index"
 
+LOGIN_URL = "/"
+
 LOGOUT_REDIRECT_URL = "home"
