@@ -9,15 +9,19 @@ class StudyGroup(models.Model):
     name = models.CharField(max_length=100)
     species = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    # new code below
+    # Admin user (group owner)
+    admin = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="admin_study_groups"
+    )
+
+    # Members of the study group
+    members = models.ManyToManyField(User, related_name="study_groups")
+
     def __str__(self):
         return self.name
 
-    # Define a method to get the URL for this particular cat instance
     def get_absolute_url(self):
-        # Use the 'reverse' function to dynamically find the URL for viewing this cat's details
         return reverse("plant-detail", kwargs={"plant_id": self.id})
 
 
