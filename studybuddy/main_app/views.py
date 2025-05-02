@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 from .models import StudyGroup
-from .forms import WateringForm
+from .forms import MessageForm
 
 
 # Create your views here.
@@ -33,22 +33,22 @@ def about(request):
 @login_required
 def plant_detail(request, plant_id):
     plant = StudyGroup.objects.get(id=plant_id)
-    watering_form = WateringForm()
+    message_form = MessageForm()
     return render(
-        request, "plants/details.html", {"plant": plant, "watering_form": watering_form}
+        request, "plants/details.html", {"plant": plant, "message_form": message_form}
     )
 
 
 @login_required
-def add_watering(request, plant_id):
+def add_message(request, plant_id):
     # create a ModelForm instance using the data in request.POST
-    form = WateringForm(request.POST)
+    form = MessageForm(request.POST)
     # validate the form
     if form.is_valid():
         # don't save the form to the db until it
         # has the plant_id assigned
         new_feeding = form.save(commit=False)
-        new_feeding.plant_id = plant_id
+        new_feeding.study_group_id = plant_id
         new_feeding.save()
     return redirect("plant-detail", plant_id=plant_id)
 

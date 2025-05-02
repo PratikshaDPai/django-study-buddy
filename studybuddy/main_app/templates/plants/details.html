@@ -22,19 +22,19 @@
     <div class="feedings-toy-container">
         <section class="feedings">
             <div class="subsection-title">
-                <h2>Waterings</h2>
+                <h2>Messages</h2>
             </div>
-            <!-- Add just above the waterings table -->
-            <h3>Add a Watering</h3>
-            <form action="{% url 'add-watering' plant.id %}"
+            <!-- Add just above the messages table -->
+            <h3>Add a Message</h3>
+            <form action="{% url 'add-message' plant.id %}"
                   method="post"
                   class="subsection-content"
                   autocomplete="off">
                 {% csrf_token %}
-                {{ watering_form.as_p }}
-                <button type="submit" class="btn submit">Add Watering</button>
+                {{ message_form.as_p }}
+                <button type="submit" class="btn submit">Add Message</button>
             </form>
-            {% if plant.watering_set.all.count %}
+            {% if plant.message_set.all.count %}
                 <table>
                     <thead>
                         <tr>
@@ -42,9 +42,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for watering in plant.watering_set.all %}
+                        {% for message in plant.message_set.all %}
                             <tr>
-                                <td>{{ watering.date }}</td>
+                                <td>{{ message.date }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>

@@ -34,4 +34,4 @@ class Message(models.Model):
         return f"{self.date}"
 
     class Meta:
-        ordering = ["-date"]  # This line makes the newest waterings appear first
+        ordering = ["-date"]  # This line makes the newest messages appear first

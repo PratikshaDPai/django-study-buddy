@@ -2,7 +2,7 @@ from django import forms
 from .models import Message, StudyGroup
 
 
-class WateringForm(forms.ModelForm):
+class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
         fields = ["date"]
@@ -15,14 +15,14 @@ class WateringForm(forms.ModelForm):
 
     def plant_detail(request, plant_id):
         plant = StudyGroup.objects.get(id=plant_id)
-        # instantiate WateringForm to be rendered in the template
-        watering_form = WateringForm()
+        # instantiate MessageForm to be rendered in the template
+        message_form = MessageForm()
         return render(
             request,
             "plants/detail.html",
             {
-                # include the plant and watering_form in the context
+                # include the plant and message_form in the context
                 "plant": plant,
-                "watering_form": watering_form,
+                "message_form": message_form,
             },
         )
