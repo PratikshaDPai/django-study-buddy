@@ -27,11 +27,12 @@ class StudyGroup(models.Model):
 
 class Message(models.Model):
     date = models.DateField()
+    content = models.TextField(max_length=1000)
     study_group = models.ForeignKey(StudyGroup, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.date} - {self.user.username}"
+        return f"{self.date} - {self.user.username}: {self.content[:30]}"
 
     class Meta:
         ordering = ["-date"]

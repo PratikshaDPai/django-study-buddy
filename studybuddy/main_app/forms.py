@@ -5,7 +5,7 @@ from .models import Message, StudyGroup
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
-        fields = ["date"]
+        fields = ["date", "content"]
         widgets = {
             "date": forms.DateInput(
                 format=("%Y-%m-%d"),
