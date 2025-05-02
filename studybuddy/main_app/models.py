@@ -27,11 +27,11 @@ class StudyGroup(models.Model):
 
 class Message(models.Model):
     date = models.DateField()
-
     study_group = models.ForeignKey(StudyGroup, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.date}"
+        return f"{self.date} - {self.user.username}"
 
     class Meta:
-        ordering = ["-date"]  # This line makes the newest messages appear first
+        ordering = ["-date"]

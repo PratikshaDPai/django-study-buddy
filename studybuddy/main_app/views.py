@@ -47,9 +47,10 @@ def add_message(request, plant_id):
     if form.is_valid():
         # don't save the form to the db until it
         # has the plant_id assigned
-        new_feeding = form.save(commit=False)
-        new_feeding.study_group_id = plant_id
-        new_feeding.save()
+        new_message = form.save(commit=False)
+        new_message.study_group_id = plant_id
+        new_message.user = request.user
+        new_message.save()
     return redirect("plant-detail", plant_id=plant_id)
 
 
