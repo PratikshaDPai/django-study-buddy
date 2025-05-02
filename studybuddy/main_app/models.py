@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 
 
 class StudyGroup(models.Model):
-    name = models.CharField(max_length=100)
-    species = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    subject = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
 
     # Admin user (group owner)
@@ -19,7 +19,7 @@ class StudyGroup(models.Model):
     members = models.ManyToManyField(User, related_name="study_groups")
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def get_absolute_url(self):
         return reverse("plant-detail", kwargs={"plant_id": self.id})
