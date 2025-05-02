@@ -25,10 +25,10 @@ class StudyGroup(models.Model):
         return reverse("plant-detail", kwargs={"plant_id": self.id})
 
 
-class Watering(models.Model):
+class Message(models.Model):
     date = models.DateField()
 
-    plant = models.ForeignKey(StudyGroup, on_delete=models.CASCADE)
+    study_group = models.ForeignKey(StudyGroup, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.date}"

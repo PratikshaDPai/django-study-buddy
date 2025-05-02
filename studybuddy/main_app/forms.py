@@ -1,10 +1,10 @@
 from django import forms
-from .models import Watering, StudyGroup
+from .models import Message, StudyGroup
 
 
 class WateringForm(forms.ModelForm):
     class Meta:
-        model = Watering
+        model = Message
         fields = ["date"]
         widgets = {
             "date": forms.DateInput(
