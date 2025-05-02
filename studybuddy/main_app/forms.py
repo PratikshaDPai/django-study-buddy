@@ -1,5 +1,5 @@
 from django import forms
-from .models import Watering, Plant
+from .models import Watering, StudyGroup
 
 
 class WateringForm(forms.ModelForm):
@@ -14,7 +14,7 @@ class WateringForm(forms.ModelForm):
         }
 
     def plant_detail(request, plant_id):
-        plant = Plant.objects.get(id=plant_id)
+        plant = StudyGroup.objects.get(id=plant_id)
         # instantiate WateringForm to be rendered in the template
         watering_form = WateringForm()
         return render(

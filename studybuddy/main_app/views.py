@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-from .models import Plant
+from .models import StudyGroup
 from .forms import WateringForm
 
 
@@ -22,7 +22,7 @@ def home(request):
 
 @login_required
 def plant_index(request):
-    plants = Plant.objects.all()
+    plants = StudyGroup.objects.all()
     return render(request, "plants/index.html", {"plants": plants})
 
 
@@ -32,7 +32,7 @@ def about(request):
 
 @login_required
 def plant_detail(request, plant_id):
-    plant = Plant.objects.get(id=plant_id)
+    plant = StudyGroup.objects.get(id=plant_id)
     watering_form = WateringForm()
     return render(
         request, "plants/details.html", {"plant": plant, "watering_form": watering_form}
@@ -80,7 +80,7 @@ def signup(request):
 
 
 class PlantCreate(LoginRequiredMixin, CreateView):
-    model = Plant
+    model = StudyGroup
     fields = "__all__"
 
     # This inherited method is called when a
@@ -93,12 +93,12 @@ class PlantCreate(LoginRequiredMixin, CreateView):
 
 
 class PlantUpdate(LoginRequiredMixin, UpdateView):
-    model = Plant
+    model = StudyGroup
     fields = "__all__"
 
 
 class PlantDelete(LoginRequiredMixin, DeleteView):
-    model = Plant
+    model = StudyGroup
     success_url = "/plants/"
 
 

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Plant(models.Model):
+class StudyGroup(models.Model):
     name = models.CharField(max_length=100)
     species = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
@@ -24,7 +24,7 @@ class Plant(models.Model):
 class Watering(models.Model):
     date = models.DateField()
 
-    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+    plant = models.ForeignKey(StudyGroup, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.date}"
