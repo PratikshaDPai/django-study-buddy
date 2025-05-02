@@ -80,7 +80,7 @@ def signup(request):
     # )
 
 
-class PlantCreate(LoginRequiredMixin, CreateView):
+class StudyGroupCreate(LoginRequiredMixin, CreateView):
     model = StudyGroup
     fields = "__all__"
 
@@ -93,12 +93,12 @@ class PlantCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PlantUpdate(LoginRequiredMixin, UpdateView):
+class StudyGroupUpdate(LoginRequiredMixin, UpdateView):
     model = StudyGroup
     fields = "__all__"
 
 
-class PlantDelete(LoginRequiredMixin, DeleteView):
+class StudyGroupDelete(LoginRequiredMixin, DeleteView):
     model = StudyGroup
     success_url = "/plants/"
 
