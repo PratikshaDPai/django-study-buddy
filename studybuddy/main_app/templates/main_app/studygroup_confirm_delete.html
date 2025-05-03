@@ -5,10 +5,10 @@
         <h1>Delete StudyGroup?</h1>
         <img src="{% static 'images/figgy.jpg' %}" alt="A cat using a computer" />
     </div>
-    <h2>Are you sure you want to delete {{ plant.title }}?</h2>
+    <h2>Are you sure you want to delete {{ object.title }}?</h2>
     <form action="" method="post" class="form">
         {% csrf_token %}
-        <a href="{% url 'plant-detail' plant.id %}" class="btn secondary">Cancel</a>
+        <a href="{% url 'plant-detail' object.id %}" class="btn secondary">Cancel</a>
         <button type="submit" class="btn danger">Yes - Delete!</button>
     </form>
 {% endblock %}
