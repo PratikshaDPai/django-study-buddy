@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 
@@ -26,7 +27,7 @@ class StudyGroup(models.Model):
 
 
 class Message(models.Model):
-    date = models.DateField()
+    date = models.DateField(default=timezone.now)
     content = models.TextField(max_length=1000)
     study_group = models.ForeignKey(StudyGroup, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)

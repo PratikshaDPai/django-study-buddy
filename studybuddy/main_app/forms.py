@@ -5,13 +5,7 @@ from .models import Message, StudyGroup
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
-        fields = ["date", "content"]
-        widgets = {
-            "date": forms.DateInput(
-                format=("%Y-%m-%d"),
-                attrs={"placeholder": "Select a date", "type": "date"},
-            ),
-        }
+        fields = ["content"]
 
     def plant_detail(request, plant_id):
         plant = StudyGroup.objects.get(id=plant_id)
