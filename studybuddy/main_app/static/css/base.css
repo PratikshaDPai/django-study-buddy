@@ -97,6 +97,9 @@ nav li {
 }
 
 .header-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: auto;
   padding: 10px 20px 0;
   max-width: 500px;
@@ -252,8 +255,6 @@ nav li {
   }
 
   .header-logo-container {
-    /* visual fix to help align logo */
-    padding-top: 6px;
     width: 256px;
     height: 35px;
   }
