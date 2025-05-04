@@ -27,7 +27,7 @@ class StudyGroup(models.Model):
 
 
 class Message(models.Model):
-    date = models.DateField(default=timezone.now)
+    date = models.DateTimeField(default=timezone.now)
     content = models.TextField(max_length=1000)
     study_group = models.ForeignKey(StudyGroup, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
