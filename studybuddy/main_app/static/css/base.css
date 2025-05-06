@@ -29,18 +29,21 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   min-height: 100vh;
-  --nav-bg: rgba(104, 197, 248, 0.7);
-  --nav-bg-ff: rgba(104, 197, 248, 0.9);
-  --borders: rgb(36, 116, 248) solid 2px;
-  --text-color: rgb(17, 20, 17);
-  --link-hover-color: rgb(16, 56, 158);
-  --button-bg: rgb(245, 245, 245);
-  --button-bg-hover: rgb(226, 226, 226);
-  --submit: rgb(26, 128, 0);
-  --warn: rgb(255, 102, 0);
-  --danger: rgb(220, 20, 30);
-  --secondary: rgb(57, 57, 57);
-  --card-box-shadow: 5px 5px 6px -1px #aaa;
+  /* Purple theme */
+  --purple: #7048ad;
+  --nav-bg: rgba(200, 160, 255, 0.6); /* soft lavender */
+  --nav-bg-ff: rgba(200, 160, 255, 0.85); /* deeper lavender */
+  --borders: rgba(150, 90, 255, 0.6) solid 2px; /* light royal purple */
+  --text-color: #2c203f; /* deep indigo */
+  --link-hover-color: #7b4dbf; /* mid-tone violet */
+  --button-bg: #f5e9ff; /* pale purple */
+  --button-bg-hover: #e8d5ff; /* slightly deeper */
+  --submit: var(--purple); /* rich purple */
+  --warn: var(--purple); /* soft orchid */
+  --danger: #d32f2f; /* same red as before */
+  --danger-bg: #f0b3b3;
+  --secondary: #5e548e; /* dusty plum */
+  --card-box-shadow: 5px 5px 6px -1px rgba(100, 50, 150, 0.2);
   --font-xtreme: 4.2rem;
   --font-xxl: 3.6rem;
   --font-xl: 2.4rem;
@@ -130,23 +133,24 @@ nav li {
 }
 
 .submit {
-  color: var(--submit);
+  color: var(--text-color);
   border-color: var(--submit);
 }
 
 .secondary {
-  color: var(--secondary);
+  color: var(--text-color);
   border-color: var(--secondary);
 }
 
 .warn {
-  color: var(--warn);
+  color: var(--text-color);
   border-color: var(--warn);
 }
 
 .danger {
-  color: var(--danger);
+  color: var(--text-color);
   border-color: var(--danger);
+  background-color: var(--danger-bg);
 }
 
 .page-header h1 {
@@ -267,7 +271,7 @@ nav li {
 
     nav,
     .header-logo-container {
-      background: rgba(104, 197, 248, 0.6);
+      background: rgba(226, 104, 248, 0.6);
       -webkit-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
     }
