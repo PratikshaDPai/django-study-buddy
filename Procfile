@@ -1,1 +1,1 @@
-web: gunicorn studybuddy.wsgi
+web: cd studybuddy && gunicorn studybuddy.wsgi
