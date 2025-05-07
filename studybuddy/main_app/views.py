@@ -31,7 +31,7 @@ def about(request):
 
 
 @login_required
-def plant_detail(request, plant_id):
+def group_detail(request, plant_id):
     plant = StudyGroup.objects.get(id=plant_id)
     message_form = MessageForm()
     return render(
