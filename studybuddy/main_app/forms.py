@@ -7,8 +7,8 @@ class MessageForm(forms.ModelForm):
         model = Message
         fields = ["content"]
 
-    def group_detail(request, plant_id):
-        plant = StudyGroup.objects.get(id=plant_id)
+    def group_detail(request, group_id):
+        plant = StudyGroup.objects.get(id=group_id)
         # instantiate MessageForm to be rendered in the template
         message_form = MessageForm()
         return render(

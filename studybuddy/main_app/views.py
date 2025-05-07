@@ -31,8 +31,8 @@ def about(request):
 
 
 @login_required
-def group_detail(request, plant_id):
-    plant = StudyGroup.objects.get(id=plant_id)
+def group_detail(request, group_id):
+    plant = StudyGroup.objects.get(id=group_id)
     message_form = MessageForm()
     return render(
         request, "plants/details.html", {"plant": plant, "message_form": message_form}
@@ -40,18 +40,18 @@ def group_detail(request, plant_id):
 
 
 @login_required
-def add_message(request, plant_id):
+def add_message(request, group_id):
     # create a ModelForm instance using the data in request.POST
     form = MessageForm(request.POST)
     # validate the form
     if form.is_valid():
         # don't save the form to the db until it
-        # has the plant_id assigned
+        # has the group_id assigned
         new_message = form.save(commit=False)
-        new_message.study_group_id = plant_id
+        new_message.study_group_id = group_id
         new_message.user = request.user
         new_message.save()
-    return redirect("plant-detail", plant_id=plant_id)
+    return redirect("plant-detail", group_id=group_id)
 
 
 def signup(request):
