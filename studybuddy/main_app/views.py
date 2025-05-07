@@ -21,7 +21,7 @@ def home(request):
 
 
 @login_required
-def plant_index(request):
+def group_index(request):
     plants = StudyGroup.objects.all()
     return render(request, "plants/index.html", {"plants": plants})
 

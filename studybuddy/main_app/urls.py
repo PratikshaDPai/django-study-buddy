@@ -3,7 +3,7 @@ from . import views  # Import views to connect routes to view functions
 
 urlpatterns = [
     path("", views.Home.as_view(), name="home"),
-    path("groups/", views.plant_index, name="plant-index"),
+    path("groups/", views.group_index, name="plant-index"),
     path("about/", views.about, name="about"),
     path("groups/<int:plant_id>/", views.plant_detail, name="plant-detail"),
     path("groups/create/", views.StudyGroupCreate.as_view(), name="plant-create"),
