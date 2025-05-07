@@ -100,7 +100,7 @@ class StudyGroupUpdate(LoginRequiredMixin, UpdateView):
 
 class StudyGroupDelete(LoginRequiredMixin, DeleteView):
     model = StudyGroup
-    success_url = "/plants/"
+    success_url = "/groups/"
 
 
 class Home(LoginView):
