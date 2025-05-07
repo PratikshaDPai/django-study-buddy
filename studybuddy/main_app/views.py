@@ -22,8 +22,8 @@ def home(request):
 
 @login_required
 def group_index(request):
-    plants = StudyGroup.objects.all()
-    return render(request, "plants/index.html", {"plants": plants})
+    groups = StudyGroup.objects.all()
+    return render(request, "groups/index.html", {"groups": groups})
 
 
 def about(request):
@@ -35,7 +35,7 @@ def group_detail(request, group_id):
     plant = StudyGroup.objects.get(id=group_id)
     message_form = MessageForm()
     return render(
-        request, "plants/details.html", {"plant": plant, "message_form": message_form}
+        request, "groups/details.html", {"plant": plant, "message_form": message_form}
     )
 
 

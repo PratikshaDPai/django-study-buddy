@@ -13,7 +13,7 @@ class MessageForm(forms.ModelForm):
         message_form = MessageForm()
         return render(
             request,
-            "plants/detail.html",
+            "groups/detail.html",
             {
                 # include the plant and message_form in the context
                 "plant": plant,
