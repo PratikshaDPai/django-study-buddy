@@ -23,7 +23,7 @@ class StudyGroup(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("plant-detail", kwargs={"group_id": self.id})
+        return reverse("group-detail", kwargs={"group_id": self.id})
 
 
 class Message(models.Model):

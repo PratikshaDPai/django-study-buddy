@@ -32,10 +32,10 @@ def about(request):
 
 @login_required
 def group_detail(request, group_id):
-    plant = StudyGroup.objects.get(id=group_id)
+    group = StudyGroup.objects.get(id=group_id)
     message_form = MessageForm()
     return render(
-        request, "groups/details.html", {"plant": plant, "message_form": message_form}
+        request, "groups/details.html", {"group": group, "message_form": message_form}
     )
 
 
@@ -51,7 +51,7 @@ def add_message(request, group_id):
         new_message.study_group_id = group_id
         new_message.user = request.user
         new_message.save()
-    return redirect("plant-detail", group_id=group_id)
+    return redirect("group-detail", group_id=group_id)
 
 
 def signup(request):
@@ -65,7 +65,7 @@ def signup(request):
             user = form.save()
             # This is how we log a user in
             login(request, user)
-            return redirect("plant-index")
+            return redirect("group-index")
         else:
             error_message = "Invalid sign up - try again"
     # A bad POST or a GET request, so render signup.html with an empty form
@@ -85,10 +85,10 @@ class StudyGroupCreate(LoginRequiredMixin, CreateView):
     fields = "__all__"
 
     # This inherited method is called when a
-    # valid plant form is being submitted
+    # valid group form is being submitted
     def form_valid(self, form):
         # Assign the logged in user (self.request.user)
-        form.instance.user = self.request.user  # form.instance is the plant
+        form.instance.user = self.request.user  # form.instance is the group
         # Let the CreateView do its job as usual
         return super().form_valid(form)
 

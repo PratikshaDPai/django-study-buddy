@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/groups/plant-details.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/groups/group-details.css' %}" />
 {% endblock %}
 {% block content %}
-    <section class="plant-container">
-        <div class="plant-img">
+    <section class="group-container">
+        <div class="group-img">
             <img class="placeholder"
                  src="{% static 'images/placeholder.png' %}"
                  alt="placeholder" />
         </div>
-        <div class="plant-details">
-            <h1>{{ plant.title }}</h1>
-            <h2>{{ plant.subject }}</h2>
-            <p>{{ plant.description }}</p>
-            <div class="plant-actions">
-                <a href="{% url 'plant-update' plant.id %}" class="btn warn">Edit</a>
-                <a href="{% url 'plant-delete' plant.id %}" class="btn danger">Delete</a>
+        <div class="group-details">
+            <h1>{{ group.title }}</h1>
+            <h2>{{ group.subject }}</h2>
+            <p>{{ group.description }}</p>
+            <div class="group-actions">
+                <a href="{% url 'group-update' group.id %}" class="btn warn">Edit</a>
+                <a href="{% url 'group-delete' group.id %}" class="btn danger">Delete</a>
             </div>
         </div>
     </section>
@@ -28,7 +28,7 @@
             </div>
             <!-- Add just above the messages table -->
             <h3>Add a Message</h3>
-            <form action="{% url 'add-message' plant.id %}"
+            <form action="{% url 'add-message' group.id %}"
                   method="post"
                   class="subsection-content"
                   autocomplete="off">
@@ -36,7 +36,7 @@
                 {{ message_form.as_p }}
                 <button type="submit" class="btn submit">Add Message</button>
             </form>
-            {% if plant.message_set.all.count %}
+            {% if group.message_set.all.count %}
                 <table>
                     <thead>
                         <tr>
@@ -46,7 +46,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for message in plant.message_set.all %}
+                        {% for message in group.message_set.all %}
                             <tr>
                                 <td>{{ message.date|date:"Y-m-d H:i" }}</td>
                                 <td>{{ message.content }}</td>
@@ -57,7 +57,7 @@
                 </table>
             {% else %}
                 <div class="subsection-content">
-                    <p>⚠️ {{ plant.title }} has no messages!</p>
+                    <p>⚠️ {{ group.title }} has no messages!</p>
                 </div>
             {% endif %}
         </section>

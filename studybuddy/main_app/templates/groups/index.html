@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/groups/plant-index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/groups/group-index.css' %}" />
 {% endblock head %}
 {% block content %}
     <section class="page-header">
         <h1>StudyGroup List</h1>
     </section>
     <section class="card-container">
-        {% for plant in groups %}
+        {% for group in groups %}
             <div class="card">
                 <div class="card-content">
-                    <a href="{% url 'plant-detail' plant.id %}">
+                    <a href="{% url 'group-detail' group.id %}">
                         <div class="card-img-container">
                             <img class="placeholder" src="{% static 'images/placeholder.png' %}" alt="A skater boy cat" />
                         </div>
-                        <h2 class="card-title">{{ plant.title }}</h2>
-                        <p>{{ plant.subject }}</p>
+                        <h2 class="card-title">{{ group.title }}</h2>
+                        <p>{{ group.subject }}</p>
                         <p>
-                            <small>{{ plant.description }}</small>
+                            <small>{{ group.description }}</small>
                         </p>
                     </a>
                 </div>
